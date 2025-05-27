@@ -1,0 +1,20 @@
+<div class="user-list-container">
+  <h2>User List</h2>
+  <!-- Display feedback message if available -->
+  <div *ngIf="message" class="feedback">{{ message }}</div>
+  <!-- 'async' pipe to automatically subscribe to the users observable -->
+  <ng-container *ngIf="users$ | async as users">
+    <ul *ngIf="users.length > 0; else noUsers">
+      <li *ngFor="let user of users">
+        <!-- Display the user's name and email -->
+        {{ user.name }} - {{ user.email }}
+      </li>
+    </ul>
+    <ng-template #noUsers>
+      <p>No users found.</p>
+    </ng-template>
+  </ng-container>
+
+  <input type="text" placeholder="Add user name" [(ngModel)]="newUser">
+  <button type="button" (click)="addUser()">Add User</button>
+</div>
