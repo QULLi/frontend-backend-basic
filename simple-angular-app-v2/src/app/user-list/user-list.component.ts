@@ -54,4 +54,22 @@ export class UserListComponent {
       this.newUser = '';
     }
   }
+
+    deleteUser(user: IUser): void {
+    if (!user.id) {
+      this.message = 'Cannot delete user: missing ID.';
+      return;
+    }
+    this.userService.deleteUser(user.id).subscribe({
+      next: () => {
+        this.message = `User "${user.name}" deleted successfully.`;
+        this.loadUsers();
+      },
+      error: (err) => {
+        console.error('Error deleting user:', err);
+        this.message = `Error deleting user "${user.name}".`;
+      }
+    });
+  }
+  
 }

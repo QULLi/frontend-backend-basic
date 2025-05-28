@@ -8,6 +8,7 @@
       <li *ngFor="let user of users">
         <!-- Display the user's name and email -->
         {{ user.name }} - {{ user.email }}
+        <button type="button" class="delete-btn" (click)="deleteUser(user)">Delete</button>
       </li>
     </ul>
     <ng-template #noUsers>

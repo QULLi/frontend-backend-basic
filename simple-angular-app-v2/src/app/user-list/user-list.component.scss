@@ -11,6 +11,9 @@
     li {
       padding: 0.5rem 0;
       border-bottom: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   }
   input {
@@ -28,6 +31,13 @@
     cursor: pointer;
     &:hover {
       background-color: #0056b3;
+    }
+        &.delete-btn {
+      background-color: #dc3545;
+      &:hover {
+        background-color: #a71d2a;
+      }
+      margin-left: 1rem;
     }
   }
 }
